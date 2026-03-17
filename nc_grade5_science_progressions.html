@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NC Grade 5 Science Learning Progressions</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #596579;
+      --line: #dbe4ef;
+      --accent: #2156a5;
+      --accent-soft: #e9f0fb;
+      --green: #dff4ea;
+      --yellow: #fff4d8;
+      --orange: #ffe5d1;
+      --purple: #efe7fb;
+      --shadow: 0 8px 24px rgba(34, 56, 97, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #204f98, #4177ca 60%, #77a4ea);
+      color: white;
+      border-radius: 28px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    .hero p {
+      margin: 8px 0;
+      max-width: 1000px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .chip {
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246,248,251,0.96);
+      backdrop-filter: blur(6px);
+      padding: 12px 0 10px;
+      margin-bottom: 18px;
+    }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .nav-grid a {
+      text-decoration: none;
+      color: var(--accent);
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+    .section-header {
+      margin: 28px 0 12px;
+      padding: 16px 18px;
+      border-left: 8px solid var(--accent);
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .section-header h2 { margin: 0 0 4px; }
+    .section-header p { margin: 0; color: var(--muted); }
+    details.std {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 14px 0;
+      overflow: hidden;
+    }
+    details.std[open] { border-color: #bcd0ef; }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+    }
+    summary::-webkit-details-marker { display: none; }
+    .code {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .title strong { font-size: 1.08rem; }
+    .title div { color: var(--muted); margin-top: 4px; }
+    .content {
+      padding: 0 20px 22px;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+      margin: 8px 0 18px;
+    }
+    .card {
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .card h3, .card h4 { margin-top: 0; margin-bottom: 10px; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .tag {
+      background: #eef3fb;
+      border: 1px solid #d7e3f6;
+      color: #355178;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.88rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+    th {
+      background: #eef4fd;
+      text-align: left;
+    }
+    .lvl-f { background: var(--yellow); }
+    .lvl-d { background: var(--orange); }
+    .lvl-p { background: var(--green); }
+    .lvl-e { background: var(--purple); }
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .diagram {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: white;
+      min-height: 180px;
+    }
+    .diagram h4 { margin: 0 0 10px; }
+    .anchor-box {
+      border: 2px dashed #9eb7df;
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fbff;
+      min-height: 118px;
+    }
+    .flow {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-weight: 700;
+      color: #355178;
+    }
+    .flow span {
+      background: #eef4fd;
+      border: 1px solid #d7e3f6;
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    .arrow { font-size: 1.15rem; }
+    .sample-text {
+      background: #fffef8;
+      border-left: 5px solid #e3bb40;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    ul { margin: 8px 0 0 18px; }
+    .footer-note {
+      margin: 28px 0 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 960px) {
+      summary, .mini-grid, .two-col { grid-template-columns: 1fr; }
+      .code { text-align: left; }
+    }
+    @media print {
+      body { background: white; }
+      .sticky-nav { position: static; }
+      .hero, .section-header, details.std, .nav-grid a { box-shadow: none; }
+      details.std { break-inside: avoid; }
+      summary { background: white; }
+      .wrap { max-width: none; padding: 10px; }
+      a { color: black; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>NC Grade 5 Science Learning Progressions</h1>
+      <p>This planning tool is organized for easy teacher use: each standard includes the exact objective, a full progression ladder, sample connected text, vocabulary, and suggested diagrams or anchor-chart ideas. The sections are collapsible so teachers can quickly move from standards review to lesson planning.</p>
+      <p><strong>Recommended use:</strong> open one standard at a time during PLC planning, lesson design, intervention planning, or small-group reteaching.</p>
+      <div class="chips">
+        <div class="chip">Clickable navigation</div>
+        <div class="chip">Collapsible standards</div>
+        <div class="chip">Full progression ladders</div>
+        <div class="chip">Sample connected texts</div>
+        <div class="chip">Anchor chart ideas</div>
+        <div class="chip">Print-friendly</div>
+      </div>
+    </section>
+
+    <div class="sticky-nav">
+      <div class="nav-grid">
+        <a href="#physical">Physical Science</a>
+        <a href="#life1">Human Body Systems</a>
+        <a href="#life2">Ecosystems</a>
+        <a href="#life3">Traits & Behaviors</a>
+        <a href="#earth">Earth Systems</a>
+      </div>
+    </div>
+
+    <section id="physical" class="section-header">
+      <h2>Physical Science</h2>
+      <p>Matter and its interactions; force, motion, and the relationship between them.</p>
+    </section>
+
+    <details class="std" open>
+      <summary>
+        <div class="code">PS.5.1.1</div>
+        <div class="title"><strong>Carry out investigations to compare the weight of objects before and after an interaction.</strong><div>Big idea: weight is conserved before and after many interactions.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students investigate what happens to weight when materials are combined, separated, or changed physically. Emphasize careful measuring, recording, and comparison rather than memorization.</p>
+            <div class="tags">
+              <span class="tag">weight</span><span class="tag">balance</span><span class="tag">measure</span><span class="tag">compare</span><span class="tag">evidence</span>
+            </div>
+            <div class="sample-text"><strong>Sample connected text:</strong> During science class, Mira placed 20 grams of sand in one cup and 30 grams of pebbles in another. Before mixing them, the total weight was 50 grams. After pouring the two materials into one container, the class measured the mixture again. The scale still read 50 grams. Mira explained that the materials had changed location, but the amount of matter had not changed.</div>
+          </div>
+          <div class="card">
+            <h3>Quick Look</h3>
+            <ul>
+              <li>Best evidence task: weigh parts, combine parts, reweigh.</li>
+              <li>Common confusion: “It looks different, so it must weigh different.”</li>
+              <li>Good extension: compare open vs closed systems when something spills or evaporates.</li>
+            </ul>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">What the Teacher Might Hear</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that objects can be weighed and compared using tools such as a balance or scale.</td><td>“This one is heavier.” “We can measure it.”</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Measures the weight of separate materials before and after combining or rearranging them.</td><td>“I weighed each part first and then checked the total.”</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Explains with evidence that the total weight remains the same after many interactions when no material is lost.</td><td>“The pieces changed form or location, but the total weight stayed the same.”</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Analyzes situations where measured weight changes and explains that matter may have been lost, added, spilled, or not fully captured.</td><td>“The weight changed because part of the material was not still in the system.”</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Anchor Chart Idea</h4><div class="anchor-box"><div class="flow"><span>Part A = 20 g</span><span class="arrow">+</span><span>Part B = 30 g</span><span class="arrow">→</span><span>Total = 50 g</span></div><p>Add a teacher-made balance sketch and sentence stem: <em>The total weight before the interaction was ___, and after the interaction it was ___.</em></p></div></div>
+          <div class="diagram"><h4>Table to Model</h4><div class="anchor-box"><table><tr><th>Material</th><th>Before</th><th>After</th></tr><tr><td>Sand + pebbles</td><td>50 g</td><td>50 g</td></tr><tr><td>Clay balls combined</td><td>42 g</td><td>42 g</td></tr></table></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">PS.5.1.2</div>
+        <div class="title"><strong>Carry out investigations to explain whether the mixing of two or more substances results in new substances.</strong><div>Big idea: some mixtures are just combinations, while some interactions produce something new.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students need repeated opportunities to compare simple mixtures with interactions that show evidence of a new substance, such as gas production, color change, temperature change, or a new solid.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> Jordan mixed salt into water and noticed that the salt seemed to disappear, but the liquid still looked like water. Later, he mixed baking soda with vinegar and saw fizzing bubbles form right away. The class discussed whether both interactions were the same. They decided that in the second investigation, the evidence suggested a new substance had formed.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags">
+              <span class="tag">substance</span><span class="tag">mixture</span><span class="tag">interaction</span><span class="tag">evidence</span><span class="tag">new substance</span>
+            </div>
+            <p>Strong sentence stem: <em>I think a new substance did / did not form because…</em></p>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Planning Moves</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Identifies that substances can be mixed and observed.</td><td>Use side-by-side tubs, jars, and simple observations.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Describes visible evidence from mixing, such as bubbles, color changes, or temperature changes.</td><td>Prompt students to record exactly what changed.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses investigation evidence to explain whether a new substance formed or the materials were simply mixed together.</td><td>Ask students to defend their claim with evidence.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Compares multiple interactions and justifies why some show stronger evidence of new substances than others.</td><td>Introduce sorting tasks and argument writing.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>T-Chart Anchor Chart</h4><div class="anchor-box"><strong>Just a Mixture</strong><ul><li>Parts still present</li><li>May be separated</li></ul><strong>Possible New Substance</strong><ul><li>Bubbles form</li><li>Unexpected temperature change</li><li>Color or smell changes</li></ul></div></div>
+          <div class="diagram"><h4>Investigation Recording Template</h4><div class="anchor-box"><table><tr><th>Materials</th><th>What happened?</th><th>New substance?</th></tr><tr><td>Salt + water</td><td>Salt dissolved</td><td>Maybe not</td></tr><tr><td>Baking soda + vinegar</td><td>Fizzing gas formed</td><td>Likely yes</td></tr></table></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">PS.5.1.3</div>
+        <div class="title"><strong>Carry out investigations to compare how heating and cooling affect some materials and how this relates to their purpose and practical applications.</strong><div>Big idea: temperature changes can affect materials in ways that matter in real life.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Keep the focus on observing, comparing, and connecting changes to use. Students should notice that some materials melt, harden, soften, expand, or change shape when heated or cooled.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> Engineers choose different materials for different jobs. A metal spoon can stay strong in hot soup, while a plastic spoon may bend if it gets too hot. Chocolate softens when heated, but butter melts even faster. By testing materials and noticing how they respond to heat and cold, scientists can decide which material is best for a certain purpose.</div>
+          </div>
+          <div class="card">
+            <h3>Good Planning Questions</h3>
+            <ul>
+              <li>What changed when the material was heated?</li>
+              <li>What happened again when the material cooled?</li>
+              <li>Why would this make the material useful or not useful?</li>
+            </ul>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Evidence of Mastery</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Observes that heating and cooling can change a material.</td><td>Notices “it melted,” “it got hard,” or “it softened.”</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Compares how two or more materials respond differently to heating or cooling.</td><td>Records side-by-side observations in a chart.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Explains how a material’s response to temperature affects its practical use.</td><td>“Metal works well for cooking because it keeps its shape.”</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Evaluates which material is the best choice for a task based on evidence from temperature investigations.</td><td>Selects and justifies the strongest option.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Practical Applications Chart</h4><div class="anchor-box"><table><tr><th>Material</th><th>Heated</th><th>Best use</th></tr><tr><td>Metal</td><td>Gets hot but holds shape</td><td>Cookware</td></tr><tr><td>Wax</td><td>Melts</td><td>Candles</td></tr><tr><td>Plastic</td><td>May soften</td><td>Containers for cool items</td></tr></table></div></div>
+          <div class="diagram"><h4>Anchor Chart Phrase Bank</h4><div class="anchor-box"><ul><li>When heated, the material…</li><li>When cooled, the material…</li><li>This matters because…</li><li>A good practical use is…</li></ul></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">PS.5.2.1</div>
+        <div class="title"><strong>Carry out investigations to explain how factors such as gravity, friction, and change in mass affect the motion of objects.</strong><div>Big idea: motion changes when forces or mass change.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students should test one factor at a time. Ramps, toy cars, textured surfaces, and added weights work well for concrete evidence.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> Ava rolled the same toy car down two ramps. One ramp was smooth, and the other had a rough strip of fabric on it. The car on the smooth ramp traveled farther because there was less friction. Then she added weight to the car and noticed the motion changed again. Ava concluded that gravity, friction, and mass can all affect how an object moves.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">gravity</span><span class="tag">friction</span><span class="tag">mass</span><span class="tag">motion</span><span class="tag">force</span></div>
+            <p>Quick oral prompt: <em>Which factor changed the motion the most, and what is your evidence?</em></p>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Teacher Moves</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that objects can move faster, slower, farther, or in a different way.</td><td>Use clear demonstrations and descriptive language.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Identifies gravity, friction, or added mass as variables that can change motion.</td><td>Use isolated one-variable investigations.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Explains with evidence how each factor changes motion in an investigation.</td><td>Require claims tied to measured results.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Predicts motion changes in new situations and justifies predictions using force concepts.</td><td>Add design challenges and transfer tasks.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Force-Effect Anchor Chart</h4><div class="anchor-box"><ul><li><strong>More friction:</strong> often less distance</li><li><strong>Less friction:</strong> often more distance</li><li><strong>Gravity:</strong> pulls objects downward</li><li><strong>Change in mass:</strong> can change how motion responds</li></ul></div></div>
+          <div class="diagram"><h4>Simple Data Table</h4><div class="anchor-box"><table><tr><th>Test</th><th>Surface</th><th>Distance</th></tr><tr><td>1</td><td>Smooth</td><td>128 cm</td></tr><tr><td>2</td><td>Rough</td><td>74 cm</td></tr></table></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">PS.5.2.2</div>
+        <div class="title"><strong>Use mathematics and computational thinking to infer the motion of an object (including position, direction, and speed).</strong><div>Big idea: numbers, measurements, and data help us describe and predict motion.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Use charts, line plots, simple graphs, and repeated timed trials. The goal is not advanced formulas, but making sense of data about position, direction, and speed.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> Every two seconds, Eli marked where a battery-powered car was on the floor with tape. After 2 seconds, the car had moved 20 centimeters. After 4 seconds, it had moved 40 centimeters. After 6 seconds, it had moved 60 centimeters. Eli used the pattern in the table to infer that the car was moving forward at a steady rate.</div>
+          </div>
+          <div class="card">
+            <h3>Useful Teacher Prompts</h3>
+            <ul>
+              <li>What pattern do you notice in the data?</li>
+              <li>How do you know the object kept moving in the same direction?</li>
+              <li>What does the graph tell you about speed?</li>
+            </ul>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Sample Product</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Describes where an object is and which direction it is moving.</td><td>Simple oral description or picture.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Uses a table or number line to record position over time.</td><td>Completed data chart with labels.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses measurements and patterns in data to infer direction, position changes, and speed.</td><td>Accurate graph explanation or data-based conclusion.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Compares motion patterns across objects and explains which object moved faster or changed direction.</td><td>Written comparison using data as evidence.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Motion Table</h4><div class="anchor-box"><table><tr><th>Time</th><th>Position</th></tr><tr><td>0 sec</td><td>0 cm</td></tr><tr><td>2 sec</td><td>20 cm</td></tr><tr><td>4 sec</td><td>40 cm</td></tr><tr><td>6 sec</td><td>60 cm</td></tr></table></div></div>
+          <div class="diagram"><h4>Anchor Chart Idea</h4><div class="anchor-box"><ul><li><strong>Position</strong> = where it is</li><li><strong>Direction</strong> = where it is going</li><li><strong>Speed</strong> = how fast position changes</li></ul><p>Add arrows and a simple line graph for teacher modeling.</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <section id="life1" class="section-header">
+      <h2>Life Science: Human Body Systems</h2>
+      <p>Structures and systems of the human body that perform functions necessary for life.</p>
+    </section>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.1.1</div>
+        <div class="title"><strong>Use models to recognize the organizational structure of humans as a multicellular organism (cell, tissue, organ, system, organism).</strong><div>Big idea: the body is organized in levels from smallest working units to the whole organism.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students need to see hierarchy clearly and repeatedly. Physical nesting cards, foldables, and body-system examples support this standard well.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> A single muscle cell can do only one small job, but many muscle cells working together form muscle tissue. Different tissues combine to make an organ, such as the heart. Organs that work together form a body system, such as the circulatory system. All of the systems together make one living human organism.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">cell</span><span class="tag">tissue</span><span class="tag">organ</span><span class="tag">system</span><span class="tag">organism</span></div>
+            <p>Have students practice saying the sequence forward and backward.</p>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Evidence of Readiness</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Identifies that living things are made of smaller parts.</td><td>Can name at least cells and organs.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Sequences the levels: cell, tissue, organ, system, organism.</td><td>Accurate ordering task or foldable.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses a model to explain how smaller structures combine to form larger body structures.</td><td>Can connect a named organ to a system and the whole organism.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Applies the organization pattern to specific body examples and explains why this structure is efficient for life functions.</td><td>Explains with a specific example such as heart tissue → heart → circulatory system.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Hierarchy Diagram</h4><div class="anchor-box"><div class="flow"><span>Cell</span><span class="arrow">→</span><span>Tissue</span><span class="arrow">→</span><span>Organ</span><span class="arrow">→</span><span>System</span><span class="arrow">→</span><span>Organism</span></div></div></div>
+          <div class="diagram"><h4>Anchor Chart Prompt</h4><div class="anchor-box"><p><strong>Example:</strong> muscle cell → muscle tissue → heart → circulatory system → human</p><p>Ask students to build additional examples.</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.1.2</div>
+        <div class="title"><strong>Use models to compare the major systems of the human body (digestive, respiratory, circulatory, muscular, skeletal, nervous) as it relates to their functions necessary for life.</strong><div>Big idea: body systems have different jobs, but they work together.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Push students beyond naming parts. Students should compare function and notice system interaction: oxygen transport, movement, support, response, and processing nutrients.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> When Sofia runs across the playground, several body systems work together. Her respiratory system brings in oxygen. Her circulatory system carries that oxygen to her muscles. Her muscular and skeletal systems help her move, while her nervous system sends and receives messages so she can react quickly. Her digestive system has already helped provide the nutrients and energy her body needs to keep going.</div>
+          </div>
+          <div class="card">
+            <h3>Compare-Contrast Focus</h3>
+            <ul>
+              <li>What is each system’s main job?</li>
+              <li>Which systems work together in this scenario?</li>
+              <li>How would the body be affected if one system did not do its job well?</li>
+            </ul>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Teacher Evidence</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Names major body systems and matches them to a basic function.</td><td>Simple matching activity.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Describes how two systems differ in function.</td><td>Uses compare-contrast language.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses models to compare multiple systems and explain how each supports life functions.</td><td>Accurate body-systems model explanation.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Explains how systems interact in real situations such as exercise, eating, breathing, or reacting to danger.</td><td>Scenario-based reasoning with multiple systems.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Body Systems Chart</h4><div class="anchor-box"><table><tr><th>System</th><th>Main Function</th></tr><tr><td>Digestive</td><td>Breaks down food</td></tr><tr><td>Respiratory</td><td>Brings in oxygen</td></tr><tr><td>Circulatory</td><td>Moves materials through body</td></tr><tr><td>Muscular</td><td>Creates movement</td></tr><tr><td>Skeletal</td><td>Supports and protects</td></tr><tr><td>Nervous</td><td>Sends messages</td></tr></table></div></div>
+          <div class="diagram"><h4>Scenario Anchor Chart</h4><div class="anchor-box"><p><strong>Running example:</strong></p><div class="flow"><span>Respiratory</span><span class="arrow">+</span><span>Circulatory</span><span class="arrow">+</span><span>Muscular</span><span class="arrow">+</span><span>Skeletal</span><span class="arrow">+</span><span>Nervous</span></div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <section id="life2" class="section-header">
+      <h2>Life Science: Ecosystems</h2>
+      <p>Interdependence of plants and animals within ecosystems.</p>
+    </section>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.2.1</div>
+        <div class="title"><strong>Engage in argument from evidence to compare the characteristics of several common ecosystems (including estuaries and salt marshes, oceans, lakes and ponds, rivers and streams, forests, and grasslands) in terms of their ability to support a variety of populations.</strong><div>Big idea: ecosystems differ, and those differences affect what can live there.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students should compare ecosystems using evidence such as water type, plant life, shelter, temperature patterns, and available food sources. This standard works well with photographs, maps, and short texts.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> A salt marsh and a grassland can both support many living things, but they do not support the same populations. A salt marsh has wet, salty conditions that fit crabs, marsh grasses, and many birds. A grassland has open, drier space that supports grasses, insects, and grazing animals. When scientists compare ecosystems, they look at which conditions help different populations survive.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">ecosystem</span><span class="tag">population</span><span class="tag">habitat</span><span class="tag">salt marsh</span><span class="tag">grassland</span><span class="tag">evidence</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Planning Moves</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that different ecosystems have different features and living things.</td><td>Use pictures and simple labels.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Describes characteristics of several ecosystems and identifies populations likely to live there.</td><td>Use comparison charts with text evidence.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Compares ecosystems using evidence to explain how well each can support a variety of populations.</td><td>Require oral or written argument from evidence.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Evaluates which ecosystem would best support a given population and justifies the claim using multiple ecosystem characteristics.</td><td>Add scenario-based ecological reasoning.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Ecosystem Comparison Table</h4><div class="anchor-box"><table><tr><th>Ecosystem</th><th>Key Conditions</th><th>Likely Populations</th></tr><tr><td>Salt marsh</td><td>Wet, salty</td><td>Crabs, marsh birds</td></tr><tr><td>Forest</td><td>Trees, shade</td><td>Deer, squirrels</td></tr><tr><td>Grassland</td><td>Open, grassy</td><td>Insects, grazers</td></tr></table></div></div>
+          <div class="diagram"><h4>Argument Anchor Chart</h4><div class="anchor-box"><p><strong>Claim</strong> + <strong>Evidence</strong> + <strong>Reasoning</strong></p><p>Sentence frame: <em>This ecosystem can support ___ because ___.</em></p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.2.2</div>
+        <div class="title"><strong>Use models to classify organisms within an ecosystem according to the function they serve: producers, consumers, or decomposers.</strong><div>Big idea: organisms have roles in moving matter and energy through ecosystems.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Focus on function, not just memorized labels. Students should explain why an organism is a producer, consumer, or decomposer.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> In a pond ecosystem, algae make their own food using sunlight, so they are producers. A fish that eats insects is a consumer because it gets energy by eating other organisms. Tiny decomposers in the mud break down dead plants and animals. Together, these roles help keep the ecosystem working.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">producer</span><span class="tag">consumer</span><span class="tag">decomposer</span><span class="tag">organism</span><span class="tag">model</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Evidence of Understanding</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Identifies living things in an ecosystem.</td><td>Can sort living vs nonliving.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Sorts familiar organisms into producers, consumers, and decomposers with support.</td><td>Picture sort or card sort.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses a model to classify organisms by function and explains why the classification fits.</td><td>Food web or ecosystem model explanation.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Analyzes more complex cases such as omnivores or ecosystem changes and explains how functions remain connected.</td><td>Flexible reasoning beyond simple examples.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Three-Column Anchor Chart</h4><div class="anchor-box"><table><tr><th>Producers</th><th>Consumers</th><th>Decomposers</th></tr><tr><td>grass, algae</td><td>rabbit, fish, hawk</td><td>fungi, bacteria</td></tr></table></div></div>
+          <div class="diagram"><h4>Classification Reminder</h4><div class="anchor-box"><ul><li><strong>Producer:</strong> makes own food</li><li><strong>Consumer:</strong> eats organisms</li><li><strong>Decomposer:</strong> breaks down remains</li></ul></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.2.3</div>
+        <div class="title"><strong>Use models to infer the effects that may result from the interconnected relationships of plants and animals to their ecosystem.</strong><div>Big idea: ecosystem changes ripple through connected organisms.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students should use food chains, food webs, and habitat scenarios to reason about cause and effect. Keep “interconnected relationships” central.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> In a forest, a long dry period caused many plants to grow poorly. Because there were fewer plants, some rabbits had less food. As rabbit numbers dropped, foxes had a harder time finding prey. Even though the drought began with the plants, the effects spread through the whole ecosystem.</div>
+          </div>
+          <div class="card">
+            <h3>Strong Instructional Prompt</h3>
+            <p><em>If one part of the ecosystem changes, what might happen next, and why?</em></p>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Product Ideas</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that plants and animals depend on one another and on their habitat.</td><td>Simple picture discussion.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Uses a basic food chain or ecosystem model to identify likely effects of a change.</td><td>Cause-and-effect arrows.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Infers how a change in one part of an ecosystem can affect multiple connected organisms.</td><td>Written explanation using a model.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Analyzes competing possibilities and predicts short-term and longer-term ecosystem effects.</td><td>Scenario analysis with justification.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Cause-and-Effect Flow</h4><div class="anchor-box"><div class="flow"><span>Less rain</span><span class="arrow">→</span><span>Fewer plants</span><span class="arrow">→</span><span>Fewer rabbits</span><span class="arrow">→</span><span>Less food for foxes</span></div></div></div>
+          <div class="diagram"><h4>Food Web Note</h4><div class="anchor-box"><p>Anchor chart prompt: <strong>One change can have many effects because ecosystems are connected.</strong></p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <section id="life3" class="section-header">
+      <h2>Life Science: Traits and Behaviors</h2>
+      <p>Inherited and acquired traits; instincts and learned behaviors.</p>
+    </section>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.3.1</div>
+        <div class="title"><strong>Ask questions to compare instincts and learned behaviors.</strong><div>Big idea: some behaviors are present without teaching, while others are learned from experience.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Use animal examples and simple human examples carefully. Students should compare behavior type and explain how they know.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> A spider does not need to attend a lesson to learn how to spin a web. That behavior is an instinct. A puppy, however, may need training to sit when told. That is a learned behavior. Scientists compare behaviors by asking whether the action happens naturally at birth or develops through teaching and experience.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">instinct</span><span class="tag">learned behavior</span><span class="tag">compare</span><span class="tag">experience</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Teacher Look-Fors</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that organisms show behaviors.</td><td>Can identify observable actions.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Sorts behaviors as instinctive or learned with support.</td><td>Uses simple examples accurately.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Asks and answers questions to compare instincts and learned behaviors.</td><td>Uses compare language and evidence.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Explains how instinct and learning can both influence survival or success in different species.</td><td>Applies the concept to unfamiliar examples.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>T-Chart</h4><div class="anchor-box"><table><tr><th>Instinct</th><th>Learned Behavior</th></tr><tr><td>web spinning</td><td>dog sitting on command</td></tr><tr><td>bird migration patterns</td><td>riding a bike</td></tr></table></div></div>
+          <div class="diagram"><h4>Question Stems</h4><div class="anchor-box"><ul><li>Was the behavior taught?</li><li>Does it happen naturally?</li><li>How are these behaviors alike and different?</li></ul></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">LS.5.3.2</div>
+        <div class="title"><strong>Ask questions to compare inherited and acquired traits.</strong><div>Big idea: some characteristics are passed from parents, while others develop through life experiences.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Keep examples concrete and age-appropriate. Focus on comparing types of traits rather than genetics vocabulary beyond the standard.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> A child may have naturally curly hair like a parent, which is an inherited trait. The same child may also have calluses on their hands from practicing on the monkey bars every day, which is an acquired trait. Inherited traits are passed from parents to offspring, while acquired traits develop because of actions, environment, or experience.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">trait</span><span class="tag">inherited</span><span class="tag">acquired</span><span class="tag">compare</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Suggested Check</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that organisms have characteristics or traits.</td><td>Can identify visible characteristics.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Classifies familiar examples as inherited or acquired with support.</td><td>Simple sorting task.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Asks and answers questions to compare inherited and acquired traits.</td><td>Explains differences using examples.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Uses comparison to explain why organisms may share some traits with parents but develop others through life experiences.</td><td>Scenario-based explanation.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Compare Chart</h4><div class="anchor-box"><table><tr><th>Inherited Traits</th><th>Acquired Traits</th></tr><tr><td>eye color, hair type</td><td>tan, muscles from exercise, calluses</td></tr></table></div></div>
+          <div class="diagram"><h4>Anchor Chart Sentence Frames</h4><div class="anchor-box"><ul><li>This trait is inherited because…</li><li>This trait is acquired because…</li><li>Both are characteristics, but they are different because…</li></ul></div></div>
+        </div>
+      </div>
+    </details>
+
+    <section id="earth" class="section-header">
+      <h2>Earth and Space Science</h2>
+      <p>Earth systems, weather, climate, and the water cycle.</p>
+    </section>
+
+    <details class="std">
+      <summary>
+        <div class="code">ESS.5.1.1</div>
+        <div class="title"><strong>Analyze and interpret data to compare daily and seasonal changes in weather conditions (including wind speed and direction, precipitation, and temperature) and patterns.</strong><div>Big idea: weather data shows patterns across time.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students need access to tables, graphs, and repeated observations. The standard is about pattern-finding, not isolated weather facts.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> During one week in October, students recorded temperatures each day and noticed cool mornings and warmer afternoons. After several months of data, they saw a bigger pattern: temperatures were generally lower in winter than in late summer. They also compared windy and calm days and tracked rainfall totals. By analyzing the data, the class could compare both daily weather changes and seasonal weather patterns.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">temperature</span><span class="tag">precipitation</span><span class="tag">wind speed</span><span class="tag">wind direction</span><span class="tag">pattern</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Best Assessment Type</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Reads simple weather measurements and observations.</td><td>Table reading / matching task.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Compares data from different days or seasons.</td><td>Short-answer comparison.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Analyzes and interprets weather data to identify daily and seasonal patterns.</td><td>Graph interpretation with explanation.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Combines multiple data sources to explain richer weather patterns and exceptions.</td><td>Multi-graph synthesis.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Weather Data Table</h4><div class="anchor-box"><table><tr><th>Day</th><th>Temp</th><th>Wind</th><th>Rain</th></tr><tr><td>Mon</td><td>61°F</td><td>NE 5 mph</td><td>0 in</td></tr><tr><td>Tue</td><td>64°F</td><td>S 8 mph</td><td>0.2 in</td></tr></table></div></div>
+          <div class="diagram"><h4>Anchor Chart Idea</h4><div class="anchor-box"><p><strong>Daily change</strong> = what changes from day to day</p><p><strong>Seasonal pattern</strong> = what tends to happen over longer periods</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">ESS.5.1.2</div>
+        <div class="title"><strong>Analyze and interpret weather data to explain current and upcoming weather conditions (including severe weather such as hurricanes and tornadoes) in a given location.</strong><div>Big idea: weather data helps explain what is happening now and what may happen next.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students should use authentic weather maps, forecasts, radar images, and data tables. Severe weather examples should stay grounded in interpreting data, not fear-based discussion.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> A class studied a weather map showing dark clouds, falling air pressure, and strong winds moving toward the coast. Radar images showed heavy rain bands getting closer. Based on the data, students explained that stormy weather was already developing and that stronger wind and rainfall were likely next. They also used safety knowledge to discuss what people should do when severe weather is expected.</div>
+          </div>
+          <div class="card">
+            <h3>Useful Teacher Prompt</h3>
+            <p><em>What evidence from the weather data supports your explanation of what is happening now and what may happen next?</em></p>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Suggested Supports</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Reads basic weather information such as temperature, clouds, or precipitation.</td><td>Labeled maps and guided chart reading.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Uses one data source to describe current weather or make a simple forecast.</td><td>Single-source forecast talk.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Analyzes and interprets weather data to explain current and upcoming conditions in a location.</td><td>Data-based written explanation.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Integrates several weather data sources and explains how they work together to strengthen a forecast, including severe weather situations.</td><td>Radar + map + data synthesis.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Forecast Evidence Box</h4><div class="anchor-box"><ul><li>Cloud cover</li><li>Air pressure trend</li><li>Wind direction</li><li>Radar image</li><li>Precipitation chance</li></ul></div></div>
+          <div class="diagram"><h4>Sentence Frame</h4><div class="anchor-box"><p>Current conditions are ___ because the data show ___. Upcoming conditions may be ___ because ___.</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">ESS.5.1.3</div>
+        <div class="title"><strong>Construct an explanation to summarize the ocean’s influences on weather and climate in North Carolina.</strong><div>Big idea: nearby ocean water strongly affects North Carolina weather and climate.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Use maps of North Carolina, coastal vs inland comparisons, and discussions of the Gulf Stream and ocean influence on temperature and moisture. Keep the standard rooted in North Carolina.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> The Atlantic Ocean affects weather and climate across North Carolina. Coastal areas often have more moisture in the air and can experience storms moving in from the ocean. Ocean water can also influence temperatures, keeping some coastal places warmer in winter and cooler in summer than inland areas. Because North Carolina is close to the ocean, the ocean is an important part of the state’s weather and climate patterns.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">ocean</span><span class="tag">weather</span><span class="tag">climate</span><span class="tag">coastal</span><span class="tag">moisture</span><span class="tag">North Carolina</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Look-Fors</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Recognizes that oceans affect nearby weather.</td><td>Can state a general ocean influence.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Describes ways ocean proximity affects moisture, temperature, or storms in North Carolina.</td><td>Uses state-specific examples.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Constructs an explanation summarizing how the ocean influences North Carolina weather and climate.</td><td>Clear written or oral explanation.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Compares coastal and inland patterns and explains why ocean influence matters more strongly in some places or times.</td><td>Location comparison with reasoning.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>NC Coast vs Inland Chart</h4><div class="anchor-box"><table><tr><th>Location</th><th>Ocean Influence</th></tr><tr><td>Coast</td><td>More moisture, storm influence, moderated temperature</td></tr><tr><td>Inland</td><td>Less direct ocean influence</td></tr></table></div></div>
+          <div class="diagram"><h4>Anchor Chart Idea</h4><div class="anchor-box"><div class="flow"><span>Atlantic Ocean</span><span class="arrow">→</span><span>Moisture</span><span class="arrow">→</span><span>Weather</span></div><div class="flow" style="margin-top:8px;"><span>Ocean temperature</span><span class="arrow">→</span><span>Climate effects</span></div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="std">
+      <summary>
+        <div class="code">ESS.5.1.4</div>
+        <div class="title"><strong>Use models to explain how the sun’s energy drives the processes of the water cycle (including evaporation, transpiration, condensation, precipitation).</strong><div>Big idea: the sun provides energy that keeps water moving through the cycle.</div></div>
+      </summary>
+      <div class="content">
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Teacher Planning Notes</h3>
+            <p>Students need a causal explanation, not just a labeled cycle. The sun’s energy should be central in every model and explanation.</p>
+            <div class="sample-text"><strong>Sample connected text:</strong> The water cycle keeps water moving through Earth’s systems. The sun heats water on Earth’s surface, causing evaporation. Plants also release water vapor into the air through transpiration. As water vapor cools, it condenses into tiny droplets that form clouds. When enough water collects in the clouds, precipitation falls back to Earth. Without the sun’s energy, this cycle would not keep moving.</div>
+          </div>
+          <div class="card">
+            <h3>Vocabulary Practice</h3>
+            <div class="tags"><span class="tag">sun’s energy</span><span class="tag">evaporation</span><span class="tag">transpiration</span><span class="tag">condensation</span><span class="tag">precipitation</span><span class="tag">water cycle</span></div>
+          </div>
+        </div>
+        <table>
+          <tr><th style="width: 18%">Progression Level</th><th>Student Understanding</th><th style="width: 28%">Instructional Checkpoint</th></tr>
+          <tr><td class="lvl-f"><strong>Foundational</strong></td><td>Identifies parts of the water cycle in a model.</td><td>Can label stages correctly.</td></tr>
+          <tr><td class="lvl-d"><strong>Developing</strong></td><td>Describes what happens during evaporation, transpiration, condensation, and precipitation.</td><td>Can explain each process in words.</td></tr>
+          <tr><td class="lvl-p"><strong>Proficient</strong></td><td>Uses a model to explain how the sun’s energy drives the water cycle processes.</td><td>Connects the sun directly to cycle movement.</td></tr>
+          <tr><td class="lvl-e"><strong>Extending</strong></td><td>Explains how changes in heat, weather, or plant presence could affect parts of the cycle.</td><td>Applies the model to new situations.</td></tr>
+        </table>
+        <div class="diagram-grid">
+          <div class="diagram"><h4>Water Cycle Flow</h4><div class="anchor-box"><div class="flow"><span>Sun’s Energy</span><span class="arrow">→</span><span>Evaporation / Transpiration</span><span class="arrow">→</span><span>Condensation</span><span class="arrow">→</span><span>Precipitation</span></div></div></div>
+          <div class="diagram"><h4>Anchor Chart Reminder</h4><div class="anchor-box"><p><strong>Teacher key sentence:</strong> The sun’s energy starts and continues the movement of water through the cycle.</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="section-header">
+      <h2>Planning Supports</h2>
+      <p>Use this section as a quick reference during unit planning.</p>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Suggested Column Uses for Teacher Planning</h3>
+        <ul>
+          <li><strong>Progression ladder:</strong> use to identify entry point and next step.</li>
+          <li><strong>Sample text:</strong> use for warm-ups, close reads, and evidence discussion.</li>
+          <li><strong>Diagrams / anchor charts:</strong> use for direct instruction or notebook pages.</li>
+          <li><strong>Vocabulary:</strong> use for oral rehearsal and quick writes.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Easy Routine for Any Standard</h3>
+        <ol>
+          <li>Open the standard and read the exact objective.</li>
+          <li>Use the sample text to build background and discussion.</li>
+          <li>Teach from the anchor chart or table.</li>
+          <li>Check where students are on the progression ladder.</li>
+          <li>Plan reteach or extension from the next row up.</li>
+        </ol>
+      </div>
+    </div>
+
+    <p class="footer-note">This HTML was built as a teacher-friendly planning tool with collapsible sections, progression ladders, sample connected text, and printable anchor chart ideas.</p>
+  </div>
+</body>
+</html>
